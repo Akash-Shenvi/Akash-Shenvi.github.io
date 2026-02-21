@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 248 250 252;
+    --surface: 255 255 255;
+    --primary: 37 99 235;
+    --secondary: 124 58 237;
+    --text-main: 15 23 42;
+  }
+
+  .dark {
+    --background: 11 15 25;
+    --surface: 26 32 44;
+    --primary: 59 130 246;
+    --secondary: 139 92 246;
+    --text-main: 241 245 249;
+  }
+
+  body {
+    @apply bg-background text-textMain transition-colors duration-300 antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-surface/70 backdrop-blur-md border border-white/10 shadow-lg;
+  }
+
+  .dark .glass {
+    @apply bg-surface/50 backdrop-blur-md border border-white/5 shadow-lg;
+  }
+
+  .premium-card {
+    @apply relative overflow-hidden rounded-2xl bg-surface border border-transparent shadow-card transition-all duration-500 hover:shadow-card-hover hover:-translate-y-1;
+  }
+
+  .dark .premium-card {
+    @apply border border-white/5 shadow-card-dark hover:border-primary/30 hover:shadow-card-dark-hover;
+  }
+
+  .glow-primary {
+    @apply shadow-glow-primary;
+  }
+
+  .dark .glow-primary {
+    @apply shadow-glow-primary-dark;
+  }
+
+  .glow-secondary {
+    @apply shadow-glow-secondary;
+  }
+
+  .dark .glow-secondary {
+    @apply shadow-glow-secondary-dark;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
+}

@@ -1,0 +1,144 @@
+import { motion } from 'framer-motion';
+import { Github, Linkedin, Code, Mail } from 'lucide-react';
+
+export default function Hero() {
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.2
+            },
+        },
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, scale: 0.8, y: 30 },
+        visible: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 12 } },
+    };
+
+    return (
+        <section id="hero" className="min-h-[90vh] flex items-center justify-center relative overflow-hidden">
+
+            {/* Heavy Animated Background Geometry */}
+            <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
+                <motion.div
+                    animate={{ rotate: [0, 360], scale: [1, 1.2, 1] }}
+                    transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                    className="w-[80vw] h-[80vw] md:w-[60vw] md:h-[60vw] border-[1px] border-primary/10 rounded-full border-dashed absolute mix-blend-overlay"
+                />
+                <motion.div
+                    animate={{ rotate: [360, 0], scale: [1, 1.1, 1] }}
+                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                    className="w-[60vw] h-[60vw] md:w-[40vw] md:h-[40vw] border-[1px] border-secondary/10 rounded-full border-dotted absolute mix-blend-overlay"
+                />
+            </div>
+
+            <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center z-10 w-full">
+
+                {/* Left Content */}
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="text-left flex flex-col justify-center items-start space-y-8"
+                >
+                    <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-surface border border-white/10 shadow-sm relative overflow-hidden group">
+                        <motion.div
+                            animate={{ x: ["-100%", "200%"] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
+                        />
+                        <Code className="w-5 h-5 text-primary group-hover:animate-spin" />
+                        <span className="text-sm font-bold text-textMain tracking-wide">Available for new opportunities</span>
+                    </motion.div>
+
+                    <motion.h1 variants={itemVariants} className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight">
+                        Hi, I'm <br />
+                        <span className="text-gradient relative inline-block">
+                            Akash D Shenvi
+                        </span>
+                    </motion.h1>
+
+                    <motion.p variants={itemVariants} className="text-xl sm:text-2xl text-textMain/80 font-medium max-w-xl">
+                        Full-Stack Developer crafting scalable applications and immersive digital experiences.
+                    </motion.p>
+
+                    <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6 w-full sm:w-auto">
+                        <a
+                            href="#projects"
+                            className="w-full sm:w-auto px-8 py-4 bg-primary text-white font-bold rounded-xl glow-primary transition-all duration-300 hover:scale-105 hover:bg-blue-600 flex items-center justify-center relative overflow-hidden group"
+                        >
+                            <span className="relative z-10">View My Work</span>
+                            <motion.div className="absolute inset-0 bg-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0" />
+                        </a>
+                        <a
+                            href="#contact"
+                            className="w-full sm:w-auto px-8 py-4 bg-surface text-textMain font-bold rounded-xl border border-white/10 shadow-lg transition-all duration-300 hover:scale-105 hover:border-secondary/50 flex items-center justify-center"
+                        >
+                            Contact Me
+                        </a>
+                    </motion.div>
+
+                    <motion.div variants={itemVariants} className="flex space-x-6 pt-4">
+                        <a href="https://github.com/Akash-Shenvi" target="_blank" rel="noopener noreferrer" className="p-4 bg-surface rounded-full shadow-lg hover:text-primary transition-all duration-300 hover:-translate-y-2 hover:shadow-primary/30">
+                            <Github className="w-6 h-6" />
+                        </a>
+                        <a href="https://www.linkedin.com/in/akash-d-shenvi-474234259" target="_blank" rel="noopener noreferrer" className="p-4 bg-surface rounded-full shadow-lg hover:text-primary transition-all duration-300 hover:-translate-y-2 hover:shadow-primary/30">
+                            <Linkedin className="w-6 h-6" />
+                        </a>
+                        <a href="mailto:akashshenvi93@gmail.com" className="p-4 bg-surface rounded-full shadow-lg hover:text-primary transition-all duration-300 hover:-translate-y-2 hover:shadow-primary/30">
+                            <Mail className="w-6 h-6" />
+                        </a>
+                    </motion.div>
+                </motion.div>
+
+                {/* Right Photo Area */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
+                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                    transition={{ duration: 1, type: "spring", stiffness: 50 }}
+                    className="relative w-full max-w-md mx-auto lg:ml-auto"
+                >
+                    {/* Animated Blob behind image */}
+                    <motion.div
+                        animate={{
+                            borderRadius: ["40% 60% 70% 30% / 40% 50% 60% 50%", "60% 40% 30% 70% / 60% 30% 70% 40%", "40% 60% 70% 30% / 40% 50% 60% 50%"],
+                            rotate: [0, 180, 360]
+                        }}
+                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                        className="absolute inset-0 bg-gradient-to-tr from-primary to-secondary blur-2xl opacity-60 dark:opacity-40 animate-blob"
+                    />
+
+                    <div className="relative aspect-square rounded-[3rem] overflow-hidden border-4 border-surface shadow-2xl glass p-2 transform transition-transform hover:scale-105 duration-500">
+                        <div className="w-full h-full rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-black/5 to-black/20 dark:from-white/5 dark:to-white/20">
+                            {/* Placeholder Image - replace with actual photo */}
+                            <img
+                                src="https://images.unsplash.com/photo-1549419163-fdf096205cf9?q=80&w=800&auto=format&fit=crop"
+                                alt="Akash D Shenvi"
+                                className="w-full h-full object-cover mix-blend-overlay opacity-80"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Floating badges around photo */}
+                    <motion.div
+                        animate={{ y: [-10, 10, -10] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute -top-6 -right-6 glass px-6 py-3 rounded-2xl font-bold shadow-lg text-primary"
+                    >
+                        Full-Stack
+                    </motion.div>
+                    <motion.div
+                        animate={{ y: [10, -10, 10] }}
+                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                        className="absolute -bottom-6 -left-6 glass px-6 py-3 rounded-2xl font-bold shadow-lg text-secondary"
+                    >
+                        Developer
+                    </motion.div>
+                </motion.div>
+            </div>
+        </section>
+    );
+}
