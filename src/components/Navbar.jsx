@@ -14,7 +14,7 @@ export default function Navbar({ theme, toggleTheme }) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <header className="fixed w-full top-0 left-0 z-50 glass">
+        <header className="fixed w-full top-0 left-0 z-50 glass transform-gpu" style={{ willChange: 'transform, backdrop-filter' }}>
             <nav className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
                 <a href="#" className="flex items-center space-x-2 text-2xl font-bold text-textMain relative group">
                     <span className="text-secondary group-hover:text-primary transition-colors duration-300">Akash</span>

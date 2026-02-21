@@ -118,14 +118,16 @@ export default function Hero() {
                     <motion.div
                         animate={{ y: [-10, 10, -10] }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 glass px-4 py-2 sm:px-6 sm:py-3 rounded-2xl font-bold shadow-lg text-primary text-sm sm:text-base z-10"
+                        className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 glass px-4 py-2 sm:px-6 sm:py-3 rounded-2xl font-bold shadow-lg text-primary text-sm sm:text-base z-10 transform-gpu"
+                        style={{ willChange: 'transform' }}
                     >
                         Full-Stack
                     </motion.div>
                     <motion.div
                         animate={{ y: [10, -10, 10] }}
                         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                        className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 glass px-4 py-2 sm:px-6 sm:py-3 rounded-2xl font-bold shadow-lg text-secondary text-sm sm:text-base z-10"
+                        className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 glass px-4 py-2 sm:px-6 sm:py-3 rounded-2xl font-bold shadow-lg text-secondary text-sm sm:text-base z-10 transform-gpu"
+                        style={{ willChange: 'transform' }}
                     >
                         Developer
                     </motion.div>

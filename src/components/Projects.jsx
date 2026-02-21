@@ -159,7 +159,7 @@ export default function Projects() {
     return (
         <section id="projects" className="relative py-12">
             {/* Background Blob (Optimized for performance) */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[120vw] md:w-[60vw] md:h-[60vw] bg-primary/5 rounded-[40%] blur-[120px] -z-10 transform-gpu" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[120vw] md:w-[60vw] md:h-[60vw] bg-primary/5 rounded-[40%] blur-[120px] -z-10 transform-gpu" style={{ willChange: 'transform' }} />
 
             {/* Client Projects Section */}
             <div className="text-center mb-16">

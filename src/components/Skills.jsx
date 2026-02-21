@@ -30,7 +30,8 @@ const MarqueeRow = ({ items, direction = "left" }) => {
             <motion.div
                 animate={{ x: direction === "left" ? ["0%", "-50%"] : ["-50%", "0%"] }}
                 transition={{ duration: 25, ease: "linear", repeat: Infinity }}
-                className="flex space-x-6 w-max shrink-0 pr-6"
+                className="flex space-x-6 w-max shrink-0 pr-6 transform-gpu"
+                style={{ willChange: 'transform' }}
             >
                 {/* Render twice for infinite scrolling loop */}
                 {[...items, ...items].map((tech, index) => (
@@ -58,12 +59,14 @@ export default function Skills() {
             <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 150, repeat: Infinity, ease: "linear" }}
-                className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[100px] -z-10"
+                className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[100px] -z-10 transform-gpu"
+                style={{ willChange: 'transform' }}
             />
             <motion.div
                 animate={{ rotate: -360 }}
                 transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
-                className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[80px] -z-10"
+                className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[80px] -z-10 transform-gpu"
+                style={{ willChange: 'transform' }}
             />
 
             <div className="text-center mb-16 relative z-10">
