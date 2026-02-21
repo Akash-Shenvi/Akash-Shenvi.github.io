@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Code, Mail } from 'lucide-react';
+import profileImg from '../assets/profile.jpg';
 
 export default function Hero() {
     const containerVariants = {
@@ -21,17 +22,17 @@ export default function Hero() {
     return (
         <section id="hero" className="min-h-[90vh] flex items-center justify-center relative overflow-hidden">
 
-            {/* Heavy Animated Background Geometry */}
+            {/* Animated Background Geometry (Optimized) */}
             <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
                 <motion.div
-                    animate={{ rotate: [0, 360], scale: [1, 1.2, 1] }}
+                    animate={{ rotate: [0, 360] }}
                     transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                    className="w-[80vw] h-[80vw] md:w-[60vw] md:h-[60vw] border-[1px] border-primary/10 rounded-full border-dashed absolute mix-blend-overlay"
+                    className="w-[80vw] h-[80vw] md:w-[60vw] md:h-[60vw] border-[1px] border-primary/10 rounded-full border-dashed absolute mix-blend-overlay transform-gpu"
                 />
                 <motion.div
-                    animate={{ rotate: [360, 0], scale: [1, 1.1, 1] }}
+                    animate={{ rotate: [360, 0] }}
                     transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                    className="w-[60vw] h-[60vw] md:w-[40vw] md:h-[40vw] border-[1px] border-secondary/10 rounded-full border-dotted absolute mix-blend-overlay"
+                    className="w-[60vw] h-[60vw] md:w-[40vw] md:h-[40vw] border-[1px] border-secondary/10 rounded-full border-dotted absolute mix-blend-overlay transform-gpu"
                 />
             </div>
 
@@ -101,23 +102,16 @@ export default function Hero() {
                     transition={{ duration: 1, type: "spring", stiffness: 50 }}
                     className="relative w-full max-w-md mx-auto lg:ml-auto"
                 >
-                    {/* Animated Blob behind image */}
-                    <motion.div
-                        animate={{
-                            borderRadius: ["40% 60% 70% 30% / 40% 50% 60% 50%", "60% 40% 30% 70% / 60% 30% 70% 40%", "40% 60% 70% 30% / 40% 50% 60% 50%"],
-                            rotate: [0, 180, 360]
-                        }}
-                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                        className="absolute inset-0 bg-gradient-to-tr from-primary to-secondary blur-2xl opacity-60 dark:opacity-40 animate-blob"
-                    />
+                    {/* Animated Blob behind image (Optimized) */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-primary to-secondary blur-2xl opacity-60 dark:opacity-40 rounded-full transform-gpu" />
 
                     <div className="relative aspect-square rounded-[3rem] overflow-hidden border-4 border-surface shadow-2xl glass p-2 transform transition-transform hover:scale-105 duration-500">
                         <div className="w-full h-full rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-black/5 to-black/20 dark:from-white/5 dark:to-white/20">
-                            {/* Placeholder Image - replace with actual photo */}
+                            {/* Profile Photo */}
                             <img
-                                src="https://images.unsplash.com/photo-1549419163-fdf096205cf9?q=80&w=800&auto=format&fit=crop"
+                                src={profileImg}
                                 alt="Akash D Shenvi"
-                                className="w-full h-full object-cover mix-blend-overlay opacity-80"
+                                className="w-full h-full object-cover"
                             />
                         </div>
                     </div>

@@ -129,12 +129,11 @@ export default function Particles() {
 
     return (
         <div className="fixed inset-0 pointer-events-none -z-20 overflow-hidden bg-transparent">
-            {/* Keeping ambient blur blobs for depth behind the canvas */}
-            <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-primary/10 rounded-full blur-[100px] animate-pulse" />
-            <div className="absolute bottom-1/4 right-1/4 w-[30vw] h-[30vw] bg-secondary/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }} />
+            {/* Ambient blur blobs for depth behind the canvas (animations removed for performance) */}
+            <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-primary/10 rounded-full blur-[100px] transform-gpu" />
+            <div className="absolute bottom-1/4 right-1/4 w-[30vw] h-[30vw] bg-secondary/10 rounded-full blur-[100px] transform-gpu" />
 
             <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-60 dark:opacity-40" />
         </div>
     );
 }
- 
