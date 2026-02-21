@@ -42,7 +42,7 @@ function App() {
     <div className="min-h-screen text-textMain overflow-x-hidden selection:bg-primary/30 relative">
       <Particles />
       <Navbar theme={theme} toggleTheme={toggleTheme} />
-      <main className="container mx-auto px-6 py-12 md:py-24 space-y-32">
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 md:pt-24 md:pb-24 space-y-32">
         <Hero />
         <Skills />
         <Projects />

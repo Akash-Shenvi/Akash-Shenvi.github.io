@@ -4,14 +4,17 @@ import { ShieldCheck, ExternalLink, Cloud } from 'lucide-react';
 
 const metaCerts = [
     {
+        title: "Meta Front-End Developer Certificate",
         badgeId: "b2e4c743-aa00-41c7-864a-f82d2320caec",
         link: "https://coursera.org/share/b73d4c288eeef46e40685335ee1ed40c"
     },
     {
+        title: "Meta Back-End Developer Certificate",
         badgeId: "f88757f4-6363-495b-b7f9-27514e3d6b95",
         link: "https://coursera.org/share/deb8dca5aa2512cad8e70492eb1f03ab"
     },
     {
+        title: "Meta Full-Stack Engineer Certificate",
         badgeId: "1ece263d-f72e-40e6-a33d-c60ce129a769",
         link: "https://www.credly.com/badges/1ece263d-f72e-40e6-a33d-c60ce129a769/public"
     }
@@ -19,10 +22,12 @@ const metaCerts = [
 
 const gcpCerts = [
     {
+        title: "Develop Serverless Applications on Cloud Run Skill Badge",
         badgeId: "3d7895ed-94bd-49b8-a551-3af2df8ae768",
         link: "https://www.credly.com/badges/3d7895ed-94bd-49b8-a551-3af2df8ae768/public"
     },
     {
+        title: "The Basics of Google Cloud Compute Skill Badge",
         badgeId: "1d4327b6-2ca4-44f7-9182-d63b22634317",
         link: "https://www.credly.com/badges/1d4327b6-2ca4-44f7-9182-d63b22634317/public"
     }
@@ -92,14 +97,20 @@ export default function Certifications() {
                             <CredlyBadge badgeId={cert.badgeId} />
                         </div>
 
-                        <a
-                            href={cert.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="mt-4 w-full text-center py-3 bg-primary/10 hover:bg-primary text-textMain hover:text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm border border-primary/20 hover:border-primary"
-                        >
-                            Verify Certificate <ExternalLink className="w-4 h-4" />
-                        </a>
+                        <div className="mt-4 flex flex-col items-center justify-between flex-grow w-full gap-4">
+                            <h4 className="text-xl font-bold text-textMain text-center leading-tight">
+                                {cert.title}
+                            </h4>
+
+                            <a
+                                href={cert.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-full text-center py-3 bg-primary/10 hover:bg-primary text-textMain hover:text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm border border-primary/20 hover:border-primary"
+                            >
+                                Verify Certificate <ExternalLink className="w-4 h-4" />
+                            </a>
+                        </div>
                     </div>
                 </motion.div>
             ))}
