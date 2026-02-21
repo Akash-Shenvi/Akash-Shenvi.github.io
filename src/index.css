@@ -20,8 +20,9 @@
   }
 
   body {
-    @apply bg-background text-textMain transition-colors duration-300 antialiased;
+    @apply bg-background text-textMain antialiased;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    /* Removed transition-colors from body — causes full page repaint on scroll in Chrome */
   }
 }
 
@@ -60,5 +61,26 @@
 
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
+}
+
+/* ── Performance: CSS-native keyframes (compositor thread, no JS overhead) ── */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) skewX(-12deg);
+  }
+
+  100% {
+    transform: translateX(200%) skewX(-12deg);
   }
 }

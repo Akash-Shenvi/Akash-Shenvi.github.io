@@ -24,15 +24,14 @@ export default function Hero() {
 
             {/* Animated Background Geometry (Optimized) */}
             <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
-                <motion.div
-                    animate={{ rotate: [0, 360] }}
-                    transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                    className="w-[80vw] h-[80vw] md:w-[60vw] md:h-[60vw] border-[1px] border-primary/10 rounded-full border-dashed absolute mix-blend-overlay transform-gpu"
+                {/* Background rings - CSS animations keep these on compositor thread */}
+                <div
+                    className="w-[80vw] h-[80vw] md:w-[60vw] md:h-[60vw] border-[1px] border-primary/10 rounded-full border-dashed absolute transform-gpu"
+                    style={{ animation: 'spin 40s linear infinite', willChange: 'transform' }}
                 />
-                <motion.div
-                    animate={{ rotate: [360, 0] }}
-                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                    className="w-[60vw] h-[60vw] md:w-[40vw] md:h-[40vw] border-[1px] border-secondary/10 rounded-full border-dotted absolute mix-blend-overlay transform-gpu"
+                <div
+                    className="w-[60vw] h-[60vw] md:w-[40vw] md:h-[40vw] border-[1px] border-secondary/10 rounded-full border-dotted absolute transform-gpu"
+                    style={{ animation: 'spin 30s linear infinite reverse', willChange: 'transform' }}
                 />
             </div>
 
@@ -46,10 +45,9 @@ export default function Hero() {
                     className="text-left flex flex-col justify-center items-start space-y-8"
                 >
                     <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-surface border border-white/10 shadow-sm relative overflow-hidden group">
-                        <motion.div
-                            animate={{ x: ["-100%", "200%"] }}
-                            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                        <div
                             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
+                            style={{ animation: 'shimmer 2s linear infinite', willChange: 'transform' }}
                         />
                         <Code className="w-5 h-5 text-primary group-hover:animate-spin" />
                         <span className="text-sm font-bold text-textMain tracking-wide">Available for new opportunities</span>

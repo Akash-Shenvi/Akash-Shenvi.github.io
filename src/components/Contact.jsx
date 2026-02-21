@@ -14,17 +14,9 @@ export default function Contact() {
 
     return (
         <section id="contact" className="relative pb-24 overflow-hidden">
-            {/* Heavy animated floating elements */}
-            <motion.div
-                animate={{ x: [0, 100, 0], y: [0, -100, 0], rotate: [0, 45, 0] }}
-                transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute right-0 top-0 w-96 h-96 bg-primary/10 rounded-full blur-[80px] -z-10"
-            />
-            <motion.div
-                animate={{ x: [0, -100, 0], y: [0, 100, 0], scale: [1, 1.5, 1] }}
-                transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute left-0 bottom-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[100px] -z-10"
-            />
+            {/* Static ambient blobs - GPU composited, no layout jank */}
+            <div className="absolute right-0 top-0 w-96 h-96 bg-primary/10 rounded-full blur-[80px] -z-10 transform-gpu" style={{ willChange: 'transform' }} />
+            <div className="absolute left-0 bottom-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[80px] -z-10 transform-gpu" style={{ willChange: 'transform' }} />
 
             <div className="text-center mb-16 pt-12">
                 <motion.h2

@@ -7,7 +7,7 @@ export default function Particles() {
         const canvas = canvasRef.current;
         if (!canvas) return;
 
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d', { willReadFrequently: false, alpha: true });
         let particles = [];
         let animationFrameId;
 
@@ -129,11 +129,11 @@ export default function Particles() {
 
     return (
         <div className="fixed inset-0 pointer-events-none -z-20 overflow-hidden bg-transparent">
-            {/* Ambient blur blobs for depth behind the canvas (animations removed for performance) */}
-            <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-primary/10 rounded-full blur-[100px] transform-gpu" />
-            <div className="absolute bottom-1/4 right-1/4 w-[30vw] h-[30vw] bg-secondary/10 rounded-full blur-[100px] transform-gpu" />
+            {/* Static ambient blobs - no animation, GPU composited */}
+            <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-primary/5 rounded-full blur-[80px] transform-gpu" style={{ willChange: 'transform' }} />
+            <div className="absolute bottom-1/4 right-1/4 w-[30vw] h-[30vw] bg-secondary/5 rounded-full blur-[80px] transform-gpu" style={{ willChange: 'transform' }} />
 
-            <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-60 dark:opacity-40" />
+            <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-60 dark:opacity-40" style={{ willChange: 'transform' }} />
         </div>
     );
 }

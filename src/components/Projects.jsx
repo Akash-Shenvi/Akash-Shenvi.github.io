@@ -101,31 +101,23 @@ export default function Projects() {
     };
 
     const itemVariants = {
-        hidden: { opacity: 0, y: 50, rotateX: 45 },
-        visible: { opacity: 1, y: 0, rotateX: 0, transition: { duration: 0.8, type: "spring", stiffness: 50 } },
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6, type: "spring", stiffness: 60 } },
     };
 
     const renderProjectCard = (project) => {
-        // Use a slug of the title for unique layoutId without spaces
-        const slug = project.title.replace(/\s+/g, '-').toLowerCase();
-
         return (
             <motion.div
                 key={project.title}
                 variants={itemVariants}
-                layoutId={`card-container-${slug}`}
                 onClick={() => setSelectedProject(project)}
                 className="group premium-card flex flex-col h-[400px] cursor-pointer"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
             >
                 {/* Image Preview Area */}
-                <motion.div
-                    layoutId={`card-image-container-${slug}`}
-                    className="relative h-full w-full overflow-hidden bg-surface"
-                >
-                    <motion.img
-                        layoutId={`card-image-${slug}`}
+                <div className="relative h-full w-full overflow-hidden bg-surface">
+                    <img
                         src={project.image}
                         alt={project.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2 opacity-80 group-hover:opacity-100"
@@ -145,9 +137,7 @@ export default function Projects() {
                                 </span>
                             </div>
                         )}
-                        <motion.div layoutId={`card-title-container-${slug}`}>
-                            <h3 className="text-3xl font-bold mb-3 text-white group-hover:text-primary transition-colors translate-y-4 group-hover:translate-y-0 duration-300">{project.title}</h3>
-                        </motion.div>
+                        <h3 className="text-3xl font-bold mb-3 text-white group-hover:text-primary transition-colors translate-y-4 group-hover:translate-y-0 duration-300">{project.title}</h3>
                         <div className="flex flex-wrap gap-2 mt-2 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-100">
                             {project.tech.map(t => (
                                 <span key={t} className="px-3 py-1 bg-white/20 backdrop-blur-md text-white/90 text-xs font-semibold rounded-full border border-white/20 shadow-lg">
@@ -161,7 +151,7 @@ export default function Projects() {
                     <div className="absolute top-4 right-4 p-3 bg-black/40 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <Maximize2 className="w-5 h-5" />
                     </div>
-                </motion.div>
+                </div>
             </motion.div>
         );
     };
@@ -219,20 +209,28 @@ export default function Projects() {
                 {personalProjects.map(renderProjectCard)}
             </motion.div>
 
-            {/* Expanded Project Modal */}
-            <AnimatePresence>
+            {/* Expanded Project Modal - scale+opacity only (no layoutId FLIP) */}
+            <AnimatePresence mode="wait">
                 {selectedProject !== null && (
                     <>
+                        {/* Backdrop */}
                         <motion.div
+                            key="backdrop"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
+                            transition={{ duration: 0.2 }}
                             className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 cursor-pointer"
                             onClick={() => setSelectedProject(null)}
                         />
+                        {/* Modal */}
                         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-10 pointer-events-none">
                             <motion.div
-                                layoutId={`card-container-${selectedProject.title.replace(/\s+/g, '-').toLowerCase()}`}
+                                key="modal"
+                                initial={{ opacity: 0, scale: 0.92, y: 20 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.92, y: 20 }}
+                                transition={{ duration: 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
                                 className="w-full max-w-5xl bg-surface rounded-3xl overflow-hidden shadow-2xl pointer-events-auto flex flex-col lg:flex-row relative"
                             >
                                 <button
@@ -242,14 +240,16 @@ export default function Projects() {
                                     <X className="w-6 h-6" />
                                 </button>
 
-                                <motion.div layoutId={`card-image-container-${selectedProject.title.replace(/\s+/g, '-').toLowerCase()}`} className="w-full lg:w-1/2 h-64 lg:h-auto relative">
-                                    <motion.img
-                                        layoutId={`card-image-${selectedProject.title.replace(/\s+/g, '-').toLowerCase()}`}
+                                {/* Image */}
+                                <div className="w-full lg:w-1/2 h-64 lg:h-auto relative">
+                                    <img
                                         src={selectedProject.image}
+                                        alt={selectedProject.title}
                                         className="w-full h-full object-cover"
                                     />
-                                </motion.div>
+                                </div>
 
+                                {/* Info */}
                                 <div className="w-full lg:w-1/2 p-8 md:p-12 flex flex-col justify-center">
                                     {selectedProject.badge && (
                                         <div className="mb-4">
@@ -263,23 +263,21 @@ export default function Projects() {
                                             </span>
                                         </div>
                                     )}
-                                    <motion.div layoutId={`card-title-container-${selectedProject.title.replace(/\s+/g, '-').toLowerCase()}`}>
-                                        <h3 className="text-4xl font-extrabold mb-6 text-textMain">{selectedProject.title}</h3>
-                                    </motion.div>
+                                    <h3 className="text-4xl font-extrabold mb-6 text-textMain">{selectedProject.title}</h3>
 
                                     <motion.p
-                                        initial={{ opacity: 0, y: 20 }}
+                                        initial={{ opacity: 0, y: 12 }}
                                         animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.2 }}
+                                        transition={{ delay: 0.12 }}
                                         className="text-textMain/70 text-lg leading-relaxed mb-8"
                                     >
                                         {selectedProject.description}
                                     </motion.p>
 
                                     <motion.div
-                                        initial={{ opacity: 0, y: 20 }}
+                                        initial={{ opacity: 0, y: 12 }}
                                         animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.3 }}
+                                        transition={{ delay: 0.18 }}
                                         className="flex flex-wrap gap-3 mb-10"
                                     >
                                         {selectedProject.tech.map(t => (
@@ -290,9 +288,9 @@ export default function Projects() {
                                     </motion.div>
 
                                     <motion.div
-                                        initial={{ opacity: 0, y: 20 }}
+                                        initial={{ opacity: 0, y: 12 }}
                                         animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.4 }}
+                                        transition={{ delay: 0.24 }}
                                         className="flex items-center gap-6"
                                     >
                                         {selectedProject.github !== "#" && (
