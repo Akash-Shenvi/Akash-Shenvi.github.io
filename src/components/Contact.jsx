@@ -70,7 +70,7 @@ export default function Contact() {
                         </div>
                         <div>
                             <h3 className="text-xl font-bold text-textMain mb-2">Location</h3>
-                            <span className="text-textMain/70 text-sm md:text-base">Karnataka, India</span>
+                            <span className="text-textMain/70 text-sm md:text-base">Mangalore, Karnataka, India</span>
                         </div>
                     </motion.div>
                 </div>

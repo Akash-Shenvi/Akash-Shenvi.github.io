@@ -6,7 +6,7 @@ const projects = [
     {
         title: "SoVir Technologies Corporate",
         description: "Official corporate website for SoVir Technologies, delivering cutting-edge solutions in industrial automation. Features comprehensive service listings, industry expertise showcases, and an end-to-end support portfolio for manufacturing processes.",
-        tech: ["React", "Tailwind CSS", "UI/UX", "Web Development"],
+        tech: ["React", "Express", "MongoDB", "JavaScript", "Node.js", "MERN Stack", "Tailwind CSS", "Full-Stack"],
         github: "#",
         live: "https://sovirtechnologies.in/",
         image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop",
@@ -15,7 +15,7 @@ const projects = [
     {
         title: "SoVir Skilling & Training Portal",
         description: "A professional training academy platform empowering individuals with industry-ready skills. Includes features for student enrollment, mentor assignments, class scheduling, and material distribution for Industrial Automation and Global Languages.",
-        tech: ["React", "Tailwind CSS", "Node.js", "Full-Stack"],
+        tech: ["React", "Express", "MongoDB", "JavaScript", "Node.js", "MERN Stack", "Tailwind CSS", "Full-Stack"],
         github: "#",
         live: "http://training.sovirtechnologies.in/",
         image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
@@ -24,7 +24,7 @@ const projects = [
     {
         title: "SkillBridge",
         description: "An AI-powered job recommendation and professional networking platform. Uses Sentence Transformers and Machine Learning to semantically match search queries with job descriptions and automatically extract skills from resumes.",
-        tech: ["Python (Flask)", "Scikit-learn", "Tailwind CSS", "Semantic Search"],
+        tech: ["Python", "Flask", "Scikit-learn", "html", "Tailwind CSS", "Semantic Search", "Full-Stack"],
         github: "https://github.com/Akash-Shenvi/skillbridge",
         live: "#",
         image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=1200&auto=format&fit=crop",
@@ -33,7 +33,7 @@ const projects = [
     {
         title: "Study Material Distribution Platform",
         description: "A full-stack web app to distribute academic resources semester-wise. Features Google Drive API integration, a secure admin dashboard, and role-based access control.",
-        tech: ["React.js", "Flask", "MySQL", "Google Drive API"],
+        tech: ["React.js", "JavaScript", "Flask", "MySQL", "Tailwind CSS", "Google Drive API", "Full-Stack"],
         github: "https://github.com/Akash-Shenvi/andhub-canara",
         live: "https://andhub-canara.web.app",
         image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200&auto=format&fit=crop",
@@ -42,7 +42,7 @@ const projects = [
     {
         title: "Find My Recipe",
         description: "A full-stack recipe platform with an AI recipe creator and a 4000+ recipe dataset. Implemented JWT-based authentication, OAuth login, and features to create, upload, and view recipes.",
-        tech: ["Flask", "React", "MySQL"],
+        tech: ["React", "JavaScript", "MySQL", "Tailwind CSS", "OAuth", "Full-Stack"],
         github: "https://github.com/Akash-Shenvi/FindMyRecipe",
         live: "https://find-my-recipe-6bf86.web.app",
         image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1200&auto=format&fit=crop",
@@ -51,7 +51,7 @@ const projects = [
     {
         title: "Resume Relevance AI",
         description: "A hackathon project that uses the Gemini API to parse and score resumes against job descriptions. Recruiters can use this tool to automatically shortlist candidates based on resume scores.",
-        tech: ["Gemini API", "MySQL", "React", "Flask"],
+        tech: ["React", "JavaScript", "Python", "Flask", "Gemini API", "MySQL", "Full-Stack"],
         github: "https://github.com/Akash-Shenvi/Hackthon",
         live: "https://automated-resume-checker.web.app",
         image: "https://images.unsplash.com/photo-1586281380349-632531a56e51?q=80&w=1200&auto=format&fit=crop",
@@ -60,7 +60,7 @@ const projects = [
     {
         title: "IOT Data Ingestion Pipeline",
         description: "An IoT telemetry data ingestion pipeline built during my internship at Sumana Embedded Technologies. Features a frontend web interface, backend Google Cloud Functions, log monitoring, and data warehousing using BigQuery and SQL.",
-        tech: ["HTML/CSS/JS", "Google Cloud", "BigQuery", "SQL"],
+        tech: ["HTML/CSS/JS", "Google Cloud", "BigQuery", "SQL", "Full-Stack"],
         github: "https://github.com/Akash-Shenvi/iot_data_ingestion_techstack",
         live: "https://iot-data-ingestion.vercel.app/",
         image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
@@ -69,7 +69,7 @@ const projects = [
     {
         title: "YouTube Video Downloader Extension",
         description: "A client-side Chrome extension that enables users to download high-resolution YouTube videos (including 4K) by seamlessly merging separate video and audio streams using FFmpeg WebAssembly.",
-        tech: ["JavaScript", "Chrome Extensions API", "FFmpeg.wasm"],
+        tech: ["Python", "Flask", "JavaScript", "Chrome Extensions API", "FFmpeg.wasm", "Full-Stack"],
         github: "https://github.com/Akash-Shenvi/Youtube-Video-Download",
         live: "#",
         image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1200&auto=format&fit=crop",
@@ -80,7 +80,7 @@ const projects = [
     {
         title: "AI Travel Planner App",
         description: "A full-stack mobile app for managing travel itineraries. Features user authentication, AI-powered itinerary generation, trip planning, and profile management.",
-        tech: ["React Native", "Flask", "RESTful APIs"],
+        tech: ["React Native", "JavaScript", "Python", "Flask", "Full-Stack"],
         github: "https://github.com/Akash-Shenvi/Travel_Planner_App",
         live: "#",
         image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1200&auto=format&fit=crop",
@@ -106,33 +106,33 @@ export default function Projects() {
     };
 
     const renderProjectCard = (project) => {
+        const badgeClass = project.badge === 'Client Project'
+            ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
+            : project.badge === 'Internship Project' || project.badge === 'Hackathon Project'
+                ? 'bg-amber-500/20 text-amber-300 border-amber-500/30'
+                : 'bg-primary/20 text-primary border-primary/30';
+
         return (
             <motion.div
                 key={project.title}
                 variants={itemVariants}
                 onClick={() => setSelectedProject(project)}
-                className="group premium-card flex flex-col h-[400px] cursor-pointer"
+                className="group premium-card flex flex-col cursor-pointer overflow-hidden"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
             >
-                {/* Image Preview Area */}
-                <div className="relative h-full w-full overflow-hidden bg-surface">
+                {/* Image area */}
+                <div className="relative w-full h-48 sm:h-56 md:h-[400px] overflow-hidden bg-surface flex-shrink-0">
                     <img
                         src={project.image}
                         alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2 opacity-80 group-hover:opacity-100"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                     />
-
-                    {/* Overlay Content */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8 transition-opacity duration-300">
+                    {/* Desktop hover overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent hidden md:flex flex-col justify-end p-8">
                         {project.badge && (
                             <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <span className={`px-3 py-1 text-xs font-bold rounded-full shadow-lg backdrop-blur-md border ${project.badge === 'Client Project'
-                                    ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
-                                    : project.badge === 'Internship Project' || project.badge === 'Hackathon Project'
-                                        ? 'bg-amber-500/20 text-amber-300 border-amber-500/30'
-                                        : 'bg-white/10 text-white/80 border-white/20'
-                                    }`}>
+                                <span className={`px-3 py-1 text-xs font-bold rounded-full shadow-lg backdrop-blur-md border ${badgeClass}`}>
                                     {project.badge}
                                 </span>
                             </div>
@@ -140,16 +140,34 @@ export default function Projects() {
                         <h3 className="text-3xl font-bold mb-3 text-white group-hover:text-primary transition-colors translate-y-4 group-hover:translate-y-0 duration-300">{project.title}</h3>
                         <div className="flex flex-wrap gap-2 mt-2 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-100">
                             {project.tech.map(t => (
-                                <span key={t} className="px-3 py-1 bg-white/20 backdrop-blur-md text-white/90 text-xs font-semibold rounded-full border border-white/20 shadow-lg">
-                                    {t}
-                                </span>
+                                <span key={t} className="px-3 py-1 bg-white/20 backdrop-blur-md text-white/90 text-xs font-semibold rounded-full border border-white/20 shadow-lg">{t}</span>
                             ))}
                         </div>
                     </div>
-
-                    {/* Floating Maximize Icon */}
-                    <div className="absolute top-4 right-4 p-3 bg-black/40 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {/* Maximize icon (desktop) */}
+                    <div className="absolute top-4 right-4 p-3 bg-black/40 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block">
                         <Maximize2 className="w-5 h-5" />
+                    </div>
+                    {/* Mobile tap hint */}
+                    <div className="absolute top-3 right-3 p-2 bg-black/40 rounded-full text-white md:hidden">
+                        <Maximize2 className="w-4 h-4" />
+                    </div>
+                </div>
+
+                {/* Mobile content — ALWAYS visible, hidden on md+ */}
+                <div className="md:hidden p-4 flex flex-col gap-2.5">
+                    {project.badge && (
+                        <span className={`self-start px-3 py-1 text-xs font-bold rounded-full border ${badgeClass}`}>
+                            {project.badge}
+                        </span>
+                    )}
+                    <h3 className="text-lg font-bold text-textMain leading-snug">{project.title}</h3>
+                    <div className="flex flex-wrap gap-1.5">
+                        {project.tech.map(t => (
+                            <span key={t} className="px-2.5 py-1 bg-white/5 border border-white/10 text-textMain/70 text-[11px] font-medium rounded-full">
+                                {t}
+                            </span>
+                        ))}
                     </div>
                 </div>
             </motion.div>
@@ -180,7 +198,7 @@ export default function Projects() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto px-4 mb-24"
+                className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto mb-24"
             >
                 {clientProjects.map(renderProjectCard)}
             </motion.div>
@@ -204,7 +222,7 @@ export default function Projects() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto px-4"
+                className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto"
             >
                 {personalProjects.map(renderProjectCard)}
             </motion.div>
