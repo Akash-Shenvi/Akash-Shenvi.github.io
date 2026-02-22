@@ -249,79 +249,82 @@ export default function Projects() {
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.92, y: 20 }}
                                 transition={{ duration: 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
-                                className="w-full max-w-5xl bg-surface rounded-3xl overflow-hidden shadow-2xl pointer-events-auto flex flex-col lg:flex-row relative"
+                                className="w-full max-w-5xl max-h-[90vh] md:max-h-[85vh] bg-surface rounded-3xl overflow-hidden shadow-2xl pointer-events-auto relative flex flex-col"
                             >
                                 <button
                                     onClick={() => setSelectedProject(null)}
-                                    className="absolute top-4 right-4 p-3 bg-black/50 hover:bg-black/80 text-white rounded-full z-10 transition-colors"
+                                    className="absolute top-4 right-4 p-3 bg-black/50 hover:bg-black/80 text-white rounded-full z-20 transition-colors"
                                 >
                                     <X className="w-6 h-6" />
                                 </button>
 
-                                {/* Image */}
-                                <div className="w-full lg:w-1/2 h-64 lg:h-auto relative">
-                                    <img
-                                        src={selectedProject.image}
-                                        alt={selectedProject.title}
-                                        className="w-full h-full object-cover"
-                                    />
-                                </div>
+                                {/* Scrollable Container */}
+                                <div className="flex flex-col lg:flex-row w-full h-full overflow-y-auto">
+                                    {/* Image */}
+                                    <div className="w-full lg:w-1/2 h-64 lg:h-auto flex-shrink-0 relative">
+                                        <img
+                                            src={selectedProject.image}
+                                            alt={selectedProject.title}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
 
-                                {/* Info */}
-                                <div className="w-full lg:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                                    {selectedProject.badge && (
-                                        <div className="mb-4">
-                                            <span className={`inline-block px-4 py-1 text-sm font-bold rounded-full ${selectedProject.badge === 'Client Project'
-                                                ? 'bg-emerald-500/20 text-emerald-500 border border-emerald-500/30'
-                                                : selectedProject.badge === 'Internship Project' || selectedProject.badge === 'Hackathon Project'
-                                                    ? 'bg-amber-500/20 text-amber-500 border border-amber-500/30'
-                                                    : 'bg-primary/10 text-primary border border-primary/20'
-                                                }`}>
-                                                {selectedProject.badge}
-                                            </span>
-                                        </div>
-                                    )}
-                                    <h3 className="text-4xl font-extrabold mb-6 text-textMain">{selectedProject.title}</h3>
-
-                                    <motion.p
-                                        initial={{ opacity: 0, y: 12 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.12 }}
-                                        className="text-textMain/70 text-lg leading-relaxed mb-8"
-                                    >
-                                        {selectedProject.description}
-                                    </motion.p>
-
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 12 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.18 }}
-                                        className="flex flex-wrap gap-3 mb-10"
-                                    >
-                                        {selectedProject.tech.map(t => (
-                                            <span key={t} className="px-4 py-2 bg-primary/10 text-primary dark:bg-white/10 dark:text-white text-sm font-semibold rounded-xl">
-                                                {t}
-                                            </span>
-                                        ))}
-                                    </motion.div>
-
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 12 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.24 }}
-                                        className="flex items-center gap-6"
-                                    >
-                                        {selectedProject.github !== "#" && (
-                                            <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-textMain text-background rounded-full font-bold hover:scale-105 transition-transform shadow-lg">
-                                                <Github className="w-5 h-5" /> Source Code
-                                            </a>
+                                    {/* Info */}
+                                    <div className="w-full lg:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                                        {selectedProject.badge && (
+                                            <div className="mb-4">
+                                                <span className={`inline-block px-4 py-1 text-sm font-bold rounded-full ${selectedProject.badge === 'Client Project'
+                                                    ? 'bg-emerald-500/20 text-emerald-500 border border-emerald-500/30'
+                                                    : selectedProject.badge === 'Internship Project' || selectedProject.badge === 'Hackathon Project'
+                                                        ? 'bg-amber-500/20 text-amber-500 border border-amber-500/30'
+                                                        : 'bg-primary/10 text-primary border border-primary/20'
+                                                    }`}>
+                                                    {selectedProject.badge}
+                                                </span>
+                                            </div>
                                         )}
-                                        {selectedProject.live !== "#" && (
-                                            <a href={selectedProject.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full font-bold hover:scale-105 transition-transform glow-primary">
-                                                <ExternalLink className="w-5 h-5" /> Live Demo
-                                            </a>
-                                        )}
-                                    </motion.div>
+                                        <h3 className="text-4xl font-extrabold mb-6 text-textMain">{selectedProject.title}</h3>
+
+                                        <motion.p
+                                            initial={{ opacity: 0, y: 12 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: 0.12 }}
+                                            className="text-textMain/70 text-lg leading-relaxed mb-8"
+                                        >
+                                            {selectedProject.description}
+                                        </motion.p>
+
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 12 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: 0.18 }}
+                                            className="flex flex-wrap gap-3 mb-10"
+                                        >
+                                            {selectedProject.tech.map(t => (
+                                                <span key={t} className="px-4 py-2 bg-primary/10 text-primary dark:bg-white/10 dark:text-white text-sm font-semibold rounded-xl">
+                                                    {t}
+                                                </span>
+                                            ))}
+                                        </motion.div>
+
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 12 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: 0.24 }}
+                                            className="flex items-center gap-6"
+                                        >
+                                            {selectedProject.github !== "#" && (
+                                                <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-textMain text-background rounded-full font-bold hover:scale-105 transition-transform shadow-lg">
+                                                    <Github className="w-5 h-5" /> Source Code
+                                                </a>
+                                            )}
+                                            {selectedProject.live !== "#" && (
+                                                <a href={selectedProject.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full font-bold hover:scale-105 transition-transform glow-primary">
+                                                    <ExternalLink className="w-5 h-5" /> Live Demo
+                                                </a>
+                                            )}
+                                        </motion.div>
+                                    </div>
                                 </div>
                             </motion.div>
                         </div>
